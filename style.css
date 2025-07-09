@@ -19,10 +19,52 @@ body *, :root {
 }
 
 header {
-    padding-top: 32px;
+    padding-top: 2rem;
     text-align: center;
 }
 
 header img {
     width:30rem;
+}
+
+main {
+    max-width: 36rem;
+    width: 90%;
+    margin: 3rem auto;
+}
+
+section {
+    background-image: linear-gradient(90deg, #9572fc 0%, #43e7ad 50%, #e2d45c 100%);
+    border-radius: 0.625rem;
+    padding-top: 4px;
+}
+
+section > div {
+    padding: 2rem;
+    padding-top: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: #2a2634;
+}
+
+section he {
+    letter-spacing: -0.47px;
+}
+
+section p {
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+/*Animamações */
+main section {
+    opacity: 1;
+    transform: translateY(-2rem);
+
+}
+
+@keyframes appear {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
