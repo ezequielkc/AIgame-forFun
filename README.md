@@ -1,98 +1,64 @@
-# HTML
-- HypertText
-    - Textos puros, livros, revistas, jornais;
-    - Links: acessar outros documentos;
-    - Imagens, vídeos, áudios;
-- Markup
-    - Marcação
-    - Tags: <a> Link </a>
-    - Atributos: <a href="https://meusite.com.br">
-    - Globais: id, class, ...
-- Language
-    - Linguagem
-    - Sintaxe: maneira de escrever
+# Assistente Gamer
 
-# HTTP
-- HyperText
-- Transfer
-    - Transferência
-- Protocol
-    - Protocolo
-    - Conjunto de regras
+Projeto que integra inteligência artificial com interface web para responder perguntas sobre jogos.
 
-# URL
-- Uniform
-    - Uniforme
-- Resource
-    - Recurso
-- Locator
-    - Localizador
-Encontrar um recurso (html, css, js, pdf, jpg, mp4, mpr, ...)
-Endereço
+## Foco do projeto
 
-# IP
-- Internet
-  - Rede mundial de computadores
-- Protocol
-  - Conjunto de regras
-Endereço do computador
-rocketseat.com.br (domínio)
-123.32.1.23 (ip)
+O objetivo é criar uma interface simples que permite ao usuário fazer perguntas sobre estratégias, builds e dicas de jogos específicos (Valorant, League of Legends, CS:GO) e receber respostas baseadas em informações atualizadas.
 
-# DNS
-- Domain
-  - Domínio
-- Name
-  - Nome
-- Server
-  - Servidor
+## Estrutura do projeto
 
-# CSS
+```
+AIgame forFun/
+├── index.html          # Estrutura principal da página
+├── style.css           # Estilos e animações
+├── script.js           # Lógica JavaScript e API
+├── assets/
+│   ├── bg.jpg         # Imagem de fundo
+│   └── logo.png       # Logo do projeto
+└── README.md
+```
 
-- Cascading
-  - Cascata
-  - Regras das escritas
-  - Hierarquia
-  - Especificidade
-- Style
-  - Estilo
-- Sheet
-  - Folha
+## Como foi implementado
 
-De um arquivo que terá na sua sintaxe, declarações, propriedades e valores.
-A partir disso, o HTML é impactado visualmente.
+### HTML (index.html)
+- Formulário com campos para API key, seleção de jogo e pergunta
+- Estrutura semântica com header, main e section
+- Integração com fontes do Google Fonts (Inter)
+- Área para exibir respostas da IA
 
-- declaração
-- seletor
-- propriedade e valor
+### CSS (style.css)
+- Design responsivo com gradientes coloridos
+- Animações de entrada e hover effects
+- Background com imagem personalizada
+- Estilização de formulários e botões
+- Estados de loading e disabled
 
-# JS
-- Linguagem de programação
-- Browsers
-- Input -> Process -> Output
-- Variáveis
-- Function
-  - Agrupamento e reuso de código
-  - Sequencia lógica
-  - Saída
-- Gemini (IA): esperar uma resposta
-- Mexer no meu navegador
-- Estrutura de dados
-- Estrutura de decisão
-- Algoritmo: sequencia de passos lógica, de maneira ordenada, a fim de chegar a alguma conclusão (limitada)
-- Lógica (Pensamento computacional)
-  - Abstração
-  - Decomposição
-  - Algoritmo
-  - Reconhecimento de padrão
-- Tipos de dados
-  - Number (números)
-  - String (textos) (" ",  ' ',  ` `)
-  - Boolean: true | false
-  - Objects
-  - ...
+### JavaScript (script.js)
+- Integração com Gemini API 2.0 Flash
+- Conversão de markdown para HTML
+- Validação de formulários
+- Tratamento de erros
+- Busca em tempo real via Google Search
 
-# DOM
-- Document
-- Object
-- Model
+### API (Gemini)
+- Modelo: `gemini-2.0-flash`
+- Prompt estruturado com contexto específico do jogo
+- Limitação de 500 caracteres por resposta
+- Busca atualizada sobre patches atuais
+- Resposta em formato markdown
+
+## Fluxo de funcionamento
+
+1. Usuário preenche API key, seleciona jogo e faz pergunta
+2. JavaScript valida campos e envia requisição para Gemini
+3. API processa pergunta com contexto específico do jogo
+4. Resposta é convertida de markdown para HTML
+5. Resultado é exibido na interface
+
+## Tecnologias utilizadas
+
+- **Frontend**: HTML5, CSS3, JavaScript
+- **API**: Google Gemini 2.0 Flash
+- **Bibliotecas**: Showdown.js (conversão markdown)
+- **Fontes**: Google Fonts (Inter)
