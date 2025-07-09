@@ -8,13 +8,14 @@ body {
     background-image: url("./assets/bg.jpg");
     background-repeat: no-repeat;
     /* keyword */
-    background-size: 100% auto;
+    background-size: cover;
     /* width height */
-    background-position: top center;
+    background-position: center;
     /* vertical horizontal */
     background-color: #121214;
     /* HEX: RR, GG, BB */
     color: white;
+    min-height: 100vh;
 }
 
 body *,
@@ -30,12 +31,15 @@ header {
 
 header img {
     width: 30rem;
+    max-width: 90%;
+    height: auto;
 }
 
 main {
     max-width: 36rem;
     width: 90%;
     margin: 3rem auto;
+    padding: 0 1rem;
 }
 
 section {
@@ -53,11 +57,13 @@ section>div {
 
 section h2 {
     letter-spacing: -0.47px;
+    font-size: 1.5rem;
 }
 
 section p {
     letter-spacing: -0.18px;
     color: #A1A1AA;
+    font-size: 0.875rem;
 }
 
 /* Animações */
@@ -92,10 +98,20 @@ select {
     padding: 0.675rem;
     font-size: 0.875rem;
     background-color: #00000066;
+    min-width: 120px;
+}
+
+/* Estilo para as opções do select quando a caixa abre */
+select option {
+    background: linear-gradient(245deg, #9572FC 0%, #43E7AD 50%, #E2D45C 100%);
+    color: #000;
+    font-weight: bold;
+    padding: 0.5rem;
 }
 
 input {
     flex: 1;
+    min-width: 200px;
 }
 
 button {
@@ -107,6 +123,7 @@ button {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.12px;
+    font-size: 0.875rem;
 
     transition: all 0.3s;
 }
@@ -130,6 +147,8 @@ button:disabled {
     border-radius: 0.5rem;
     padding: 1.25rem;
     border-left: 4px solid #43E7AD;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 #aiResponse ul {
@@ -139,6 +158,7 @@ button:disabled {
 
 #aiResponse p {
     color: white;
+    margin-bottom: 0.5rem;
 }
 
 .loading {
@@ -153,4 +173,239 @@ button:disabled {
     50% {
         opacity: 0.5;
     }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* Mobile - Telas pequenas (até 480px) */
+@media (max-width: 480px) {
+    header {
+        padding-top: 1rem;
+    }
+    
+    header img {
+        width: 20rem;
+        max-width: 95%;
+    }
+    
+    main {
+        width: 95%;
+        margin: 2rem auto;
+        padding: 0 0.5rem;
+    }
+    
+    section>div {
+        padding: 1.5rem;
+        padding-top: 1.25rem;
+    }
+    
+    section h2 {
+        font-size: 1.25rem;
+    }
+    
+    section p {
+        font-size: 0.8rem;
+    }
+    
+    form {
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+    
+    input,
+    select {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        min-width: 100px;
+        width: 100%;
+    }
+    
+    input {
+        min-width: 150px;
+    }
+    
+    button {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    #aiResponse {
+        padding: 1rem;
+        font-size: 0.875rem;
+    }
+    
+    #aiResponse ul {
+        padding-left: 1rem;
+    }
+}
+
+/* Tablet - Telas médias (481px até 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    header img {
+        width: 25rem;
+        max-width: 92%;
+    }
+    
+    main {
+        width: 92%;
+        margin: 2.5rem auto;
+        padding: 0 0.75rem;
+    }
+    
+    section>div {
+        padding: 1.75rem;
+        padding-top: 1.5rem;
+    }
+    
+    form {
+        gap: 0.75rem;
+    }
+    
+    input,
+    select {
+        padding: 0.6rem;
+    }
+    
+    button {
+        padding: 0.6rem;
+    }
+}
+
+/* Desktop pequeno - Telas médias-grandes (769px até 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    main {
+        max-width: 40rem;
+        width: 85%;
+    }
+    
+    header img {
+        width: 28rem;
+    }
+}
+
+/* Desktop grande - Telas grandes (acima de 1024px) */
+@media (min-width: 1025px) {
+    main {
+        max-width: 42rem;
+        width: 80%;
+    }
+    
+    header img {
+        width: 32rem;
+    }
+    
+    section h2 {
+        font-size: 1.75rem;
+    }
+    
+    section p {
+        font-size: 1rem;
+    }
+    
+    input,
+    select {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+    
+    button {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+    
+    #aiResponse {
+        font-size: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+/* Orientação landscape em mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    header {
+        padding-top: 1rem;
+    }
+    
+    header img {
+        width: 18rem;
+    }
+    
+    main {
+        margin: 1.5rem auto;
+    }
+    
+    section>div {
+        padding: 1.25rem;
+        padding-top: 1rem;
+    }
+}
+
+/* Ajustes para telas muito pequenas (até 320px) */
+@media (max-width: 320px) {
+    header img {
+        width: 18rem;
+        max-width: 98%;
+    }
+    
+    main {
+        width: 98%;
+        padding: 0 0.25rem;
+    }
+    
+    section>div {
+        padding: 1rem;
+        padding-top: 0.75rem;
+    }
+    
+    form {
+        gap: 0.25rem;
+    }
+    
+    input,
+    select {
+        padding: 0.4rem;
+        font-size: 0.75rem;
+        min-width: 80px;
+        width: 100%;
+    }
+    
+    input {
+        min-width: 120px;
+    }
+    
+    button {
+        padding: 0.4rem;
+        font-size: 0.75rem;
+    }
+    
+    #aiResponse {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Melhorias para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    main section {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    button:hover {
+        transform: none;
+    }
+    
+    .loading {
+        animation: none;
+    }
+}
+
+/* Modo escuro automático (se o sistema suportar) */
+@media (prefers-color-scheme: dark) {
+    /* O design já é escuro, então não precisamos de mudanças */
+}
+
+/* Modo claro (se o usuário preferir) */
+@media (prefers-color-scheme: light) {
+    /* Manter o design escuro mesmo em modo claro para manter a identidade visual */
 }
