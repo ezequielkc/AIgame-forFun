@@ -6,7 +6,7 @@ Projeto que integra inteligência artificial com interface web para responder pe
 
 O objetivo é criar uma interface simples e responsiva que permite ao usuário fazer perguntas sobre estratégias, builds e dicas de jogos específicos (Valorant, League of Legends, Teamfight Tactics, Death Stranding 1 e 2) e receber respostas baseadas em informações atualizadas.
 
-## ⚠️ Aviso de Segurança
+## Aviso de Segurança
 
 > **Atenção:** Neste projeto, a chave da API Gemini fica visível no código JavaScript quando a opção NerdolaAI é utilizada. Isso significa que qualquer pessoa pode visualizar e utilizar essa chave ao inspecionar o código do site. **Nunca utilize este modelo em produção com uma chave sensível ou de uso pago.**
 >
