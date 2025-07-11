@@ -85,6 +85,32 @@ selectGemini.addEventListener('change', updateApiKeyVisibility)
 selectNerdolaAI.addEventListener('change', updateApiKeyVisibility)
 window.addEventListener('DOMContentLoaded', updateApiKeyVisibility)
 
+// Adicionar função para mostrar mensagem de bloqueio
+function mostrarAvisoNerdola(msg) {
+    let aviso = document.getElementById('nerdola-block-msg');
+    if (!aviso) {
+        aviso = document.createElement('div');
+        aviso.id = 'nerdola-block-msg';
+        aviso.style.background = '#ffb3b3'; // vermelho suave
+        aviso.style.color = '#7a2222'; // texto vermelho escuro
+        aviso.style.padding = '12px';
+        aviso.style.borderRadius = '8px';
+        aviso.style.textAlign = 'center';
+        aviso.style.marginBottom = '14px';
+        aviso.style.fontWeight = 'normal';
+        aviso.style.fontSize = '1.05rem';
+        aviso.style.boxShadow = '0 2px 8px #0001';
+        const form = document.getElementById('form');
+        form.parentNode.insertBefore(aviso, form);
+    }
+    aviso.textContent = msg;
+    aviso.style.display = 'block';
+    clearTimeout(aviso._timeout);
+    aviso._timeout = setTimeout(() => {
+        aviso.style.display = 'none';
+    }, 3000);
+}
+
 const enviarFormulario = async (event) => {
     event.preventDefault()
     const game = gameSelect.value
@@ -102,7 +128,8 @@ const enviarFormulario = async (event) => {
             return
         }
     } else {
-        apiKey = 'AIzaSyBH4cn8tTndIdN3PcYLt2qiQdQoyvPCT5M'
+        mostrarAvisoNerdola('API Nerdola bloqueada, não seja tão folgado assim..');
+        return
     }
     askButton.disabled = true
     askButton.textContent = 'Perguntando...'
