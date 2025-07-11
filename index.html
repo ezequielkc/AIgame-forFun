@@ -28,8 +28,29 @@
                 <p>Pergunte sobre estratégias, build e dicas para seus jogos!</p>
 
                 <form id="form">
-                    <input id="apiKey" type="password" placeholder="insira API KEY do Gemini" required>
-
+                    <div class="api-select-container">
+                        <span class="api-select-title">Escolha a inteligência:</span>
+                        <label class="api-option" for="selectGemini">
+                            <input type="radio" name="apiSelect" id="selectGemini" value="gemini" checked>
+                            <span class="api-icon">🔮</span>
+                            <span class="api-labels">
+                                <span class="api-name">Gemini</span>
+                                <span class="api-desc">Rápida, baseada em IA do Google</span>
+                            </span>
+                        </label>
+                        <label class="api-option" for="selectNerdolaAI">
+                            <input type="radio" name="apiSelect" id="selectNerdolaAI" value="nerdola">
+                            <span class="api-icon">🤓</span>
+                            <span class="api-labels">
+                                <span class="api-name">NerdolaAI</span>
+                                <span class="api-desc">Especializada, feita para gamers</span>
+                            </span>
+                        </label>
+                    </div>
+                    <div id="apiKeyField" style="display:none; margin-bottom: 12px;">
+                        <label for="apiKey" class="api-key-label">API KEY do Gemini:</label>
+                        <input id="apiKey" type="password" placeholder="Insira sua API KEY do Gemini" autocomplete="off" style="width:100%;">
+                    </div>
                     <select id="gameSelect">
                         <option value="">Selecione um jogo</option>
                         <option value="valorant">Valorant</option>
@@ -38,7 +59,6 @@
                         <option value="deathstranding1">Death Stranding 1</option>
                         <option value="deathstranding2">Death Stranding 2</option>
                     </select>
-
                     <input id="questionInput" type="text" placeholder="Ex: Melhor build para ADC..." required>
                     <button id="askButton">Perguntar</button>
                 </form>

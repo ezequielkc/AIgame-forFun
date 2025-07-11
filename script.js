@@ -1,9 +1,13 @@
-const apiKeyInput = document.getElementById('apiKey')
+console.log('JS carregado!')
 const gameSelect = document.getElementById('gameSelect')
 const questionInput = document.getElementById('questionInput')
 const askButton = document.getElementById('askButton')
 const aiResponse = document.getElementById('aiResponse')
 const form = document.getElementById('form')
+const selectGemini = document.getElementById('selectGemini')
+const selectNerdolaAI = document.getElementById('selectNerdolaAI')
+const apiKeyField = document.getElementById('apiKeyField')
+const apiKeyInput = document.getElementById('apiKey')
 
 const markdownToHTML = (text) => {
     const converter = new showdown.Converter()
@@ -67,27 +71,57 @@ const perguntarAI = async (question, game, apiKey) => {
     return data.candidates[0].content.parts[0].text
 }
 
+// Mostrar/esconder campo de API KEY conforme seleção
+function updateApiKeyVisibility() {
+    if (selectGemini.checked) {
+        apiKeyField.style.display = 'block'
+        setTimeout(() => { apiKeyInput.focus() }, 200)
+    } else {
+        apiKeyField.style.display = 'none'
+        apiKeyInput.value = ''
+    }
+}
+selectGemini.addEventListener('change', updateApiKeyVisibility)
+selectNerdolaAI.addEventListener('change', updateApiKeyVisibility)
+window.addEventListener('DOMContentLoaded', updateApiKeyVisibility)
+
 const enviarFormulario = async (event) => {
     event.preventDefault()
-    const apiKey = apiKeyInput.value
     const game = gameSelect.value
     const question = questionInput.value
-
-    if (apiKey == '' || game == '' || question == '') {
+    if (game == '' || question == '') {
         alert('Por favor, preencha todos os campos')
         return
     }
-
+    let apiKey = ''
+    if (selectGemini.checked) {
+        apiKey = apiKeyInput.value.trim()
+        if (!apiKey) {
+            alert('Por favor, insira sua API KEY do Gemini')
+            apiKeyInput.focus()
+            return
+        }
+    } else {
+        apiKey = 'AIzaSyBH4cn8tTndIdN3PcYLt2qiQdQoyvPCT5M'
+    }
     askButton.disabled = true
     askButton.textContent = 'Perguntando...'
     askButton.classList.add('loading')
-
     try {
-        const text = await perguntarAI(question, game, apiKey)
+        let text = await perguntarAI(question, game, apiKey)
+        console.log('Resposta:', text)
+        if (!text || typeof text !== 'string' || text.trim() === '') {
+            text = 'Não foi possível obter uma resposta da IA. Tente novamente.'
+        }
         aiResponse.querySelector('.response-content').innerHTML = markdownToHTML(text)
         aiResponse.classList.remove('hidden')
+        aiResponse.style.display = 'block'
+        console.log('Classes do aiResponse:', aiResponse.classList)
     } catch (error) {
         console.log('Erro: ', error)
+        aiResponse.querySelector('.response-content').innerHTML = 'Erro ao tentar obter resposta da IA.'
+        aiResponse.classList.remove('hidden')
+        aiResponse.style.display = 'block'
     } finally {
         askButton.disabled = false
         askButton.textContent = "Perguntar"

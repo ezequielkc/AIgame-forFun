@@ -409,3 +409,149 @@ button:disabled {
 @media (prefers-color-scheme: light) {
     /* Manter o design escuro mesmo em modo claro para manter a identidade visual */
 }
+
+form button {
+    margin-right: 8px;
+}
+#nerdolaAIButton {
+    margin-left: 0;
+}
+@media (max-width: 600px) {
+    form button {
+        display: block;
+        width: 100%;
+        margin: 8px 0 0 0;
+    }
+    #nerdolaAIButton {
+        margin-left: 0;
+    }
+}
+form > div {
+    margin-bottom: 12px;
+}
+form label {
+    margin-right: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+form input[type="radio"] {
+    margin-right: 4px;
+}
+
+.api-select-container {
+    width: 100%;
+    box-sizing: border-box;
+    background: #181b20;
+    border: 1.5px solid #23243a;
+    border-radius: 8px;
+    padding: 0;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    box-shadow: none;
+    flex-wrap: nowrap;
+    min-height: 0;
+    height: auto;
+}
+.api-select-title {
+    display: none;
+}
+.api-option {
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px 12px;
+    min-width: 0;
+    height: 48px;
+    font-size: 1.08rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: transparent;
+    border: none;
+}
+.api-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.api-option .api-icon {
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+.api-option .api-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.api-option .api-name {
+    font-weight: 600;
+    color: #fff;
+    font-size: 1.08rem;
+    margin-bottom: 0;
+}
+.api-option .api-desc {
+    font-size: 0.92rem;
+    color: #b3b3b3;
+    line-height: 1.1;
+}
+.api-option:hover, .api-option:focus-within {
+    background: #23243a;
+}
+.api-option input[type="radio"]:checked ~ .api-icon,
+.api-option input[type="radio"]:checked ~ .api-labels .api-name {
+    color: #6c63ff;
+}
+.api-option input[type="radio"]:checked ~ .api-labels .api-desc {
+    color: #a7a7ff;
+}
+.api-option:first-of-type {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.api-option:last-of-type {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+@media (max-width: 700px) {
+    main {
+        max-width: 100%;
+        width: 100%;
+        margin: 1rem auto;
+        padding: 0 0.25rem;
+    }
+    section>div {
+        padding: 0.75rem;
+        padding-top: 0.75rem;
+    }
+    form {
+        gap: 0.5rem;
+    }
+    .api-select-container {
+        gap: 8px;
+        padding: 0;
+        width: 100%;
+        min-width: 0;
+    }
+    .api-option {
+        width: 100%;
+        min-width: 0;
+        padding: 14px 10px;
+        font-size: 1.08rem;
+        height: 52px;
+    }
+    #gameSelect, input, button, #apiKey {
+        width: 100%;
+        min-width: 0;
+        font-size: 1.08rem;
+        padding: 14px 10px;
+        box-sizing: border-box;
+    }
+    #apiKeyField {
+        margin-bottom: 10px;
+    }
+}
